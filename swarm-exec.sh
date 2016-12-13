@@ -14,7 +14,9 @@ set -e
 ### Example : swarm-exec.sh docker run --net=host --name=myhostcontainer busybox sleep 50000
 ### This will run a busybox container in all the swarm hosts in host network
 
-OUTPUT="$(docker service create --mode=global --restart-condition none --mount type=bind,source=/usr/bin/docker,target=/usr/bin/docker --mount type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock mavenugo/swarm-exec:v0.1 $@)"
+VERSION=1.12.4
+
+OUTPUT="$(docker service create --mode=global --restart-condition none --mount type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock mavenugo/swarm-exec:$VERSION $@)"
 echo "Your command : \"$@\" is successfully executed in the swarm cluster"
 echo "Note: your docker command is executed as a swarm global service. When a new node is added to the cluster or after an upgrade, your command will be automatically executed on the new node. If you want to clean up the service, pls remove it using : "
 echo "docker service rm $OUTPUT"
