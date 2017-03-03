@@ -14,7 +14,7 @@ set -e
 ### Example : swarm-exec.sh docker run --net=host --name=myhostcontainer busybox sleep 50000
 ### This will run a busybox container in all the swarm hosts in host network
 
-VERSION=1.12.4
+VERSION=17.03.0-ce
 
 OUTPUT="$(docker service create --mode=global --restart-condition none --mount type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock mavenugo/swarm-exec:$VERSION $@)"
 echo "Your command : \"$@\" is successfully executed in the swarm cluster"
