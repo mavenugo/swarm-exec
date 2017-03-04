@@ -14,5 +14,9 @@ Run the image passing in the different commands.
 ```
 docker service create --mode=global --restart-condition none --mount type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock mavenugo/swarm-exec:17.03.0-ce docker run --net=host busybox sleep 5000
 ```
+or simply
+```
+./swarm-exec.sh docker run --net=host busybox sleep 5000
+```
 
 Also, checkout the convenience script swarm-exec.sh
